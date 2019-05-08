@@ -6,9 +6,8 @@ class TestRequest:
     base_url = os.environ.get('LINE_MESSAGE_API_BASE_URL')
     headers = {
         'Authorization': 'Bearer ' + os.environ.get('LINE_MESSAGE_API_ACCESS_TOKEN'),
-    #    'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
     }
-    print(headers)
 
     def get(self, uri):
         return requests.get(
@@ -17,9 +16,11 @@ class TestRequest:
         )
 
     def post(self, uri, body):
+        print(body)
         return requests.post(
             self.base_url + uri,
-            str(body).encode('utf-8'),
+            #str(body).encode('utf-8'),
+            json=body,
             headers=self.headers
         )
 
