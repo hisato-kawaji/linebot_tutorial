@@ -16,7 +16,6 @@ class TestRequest:
         )
 
     def post(self, uri, body):
-        print(body)
         return requests.post(
             self.base_url + uri,
             #str(body).encode('utf-8'),
